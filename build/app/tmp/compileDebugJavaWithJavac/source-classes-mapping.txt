@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-fr/ocee/mobile/BuildConfig.java
- fr.ocee.mobile.BuildConfig
