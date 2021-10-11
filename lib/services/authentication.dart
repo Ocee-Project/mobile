@@ -3,12 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:ocee/services/apiClient.dart';
 
 class AuthenticationService {
-  Future<String> hello() async {
-    await Future.delayed(Duration(seconds: 1));
-    return "Salut mec";
-  }
-
-  Future<http.Response> getCoucou() async {
-    return await ApiClient.get(url: 'coucou');
+  Future<http.Response> login({body}) async {
+    print(body);
+    return await ApiClient.post(url: 'authentication/authenticate', body: body);
   }
 }

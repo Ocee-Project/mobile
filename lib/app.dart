@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:ocee/bindings/bindings.dart';
 import 'package:ocee/utils/router.dart';
+import 'package:ocee/utils/themes.dart';
 
 class App extends StatelessWidget {
   @override
@@ -20,6 +21,7 @@ class App extends StatelessWidget {
         },
         child: GetMaterialApp(
           title: 'ocee',
+          theme: Themes.lightV2,
           initialBinding: MyBindigs(),
           debugShowCheckedModeBanner: false,
           defaultTransition: Transition.fadeIn,

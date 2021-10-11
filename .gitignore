@@ -2,3 +2,8 @@
 build
 .vscode
 .dart_tool
+.flutter-plugins
+pubspec.lock
+.packages
+.packages
+

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ocee/controllers/authentication.dart';
+import 'package:ocee/ui/components/images.dart';
+import 'package:ocee/ui/components/inputs.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -9,29 +11,44 @@ class HomePage extends StatelessWidget {
         Get.find<AuthenticationController>();
 
     return Scaffold(
-        body: Center(
+        appBar: AppBar(
+          title: Text("Connexion"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
             child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Image.asset("assets/logo.png"),
-        FutureBuilder(
-          future: authenticationController.getHelloMessage(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data);
-            } else {
-              return Text("waiting");
-            }
-          },
-        ),
-        Obx(() => Text(authenticationController.num.value.toString())),
-        RawMaterialButton(
-          onPressed: () {
-            authenticationController.increment();
-          },
-          child: Text("Increment"),
-        ),
-      ],
-    )));
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                MyImages.logo(scale: 1.5),
+                SizedBox(height: 8),
+                Form(
+                    child: Column(
+                  children: [
+                    MyInputs.formField(
+                        label: "Email",
+                        toUpdate: authenticationController.username),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    MyInputs.formField(
+                        label: "Password",
+                        toUpdate: authenticationController.password,
+                        obscure: true)
+                  ],
+                )),
+                SizedBox(
+                  height: 8,
+                ),
+                MyInputs.button(
+                    text: "Se connecter",
+                    onPress: () async {
+                      dynamic response = await authenticationController.login();
+                      print(response.statusCode);
+                    })
+              ],
+            ),
+          ),
+        ));
   }
 }
