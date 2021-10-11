@@ -21,9 +21,8 @@ class LoginPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(32.0),
-                  child: MyImages.logo(scale: 1.5),
-                ),
+                    padding: const EdgeInsets.all(32.0),
+                    child: MyImages.logo(scale: 1.5)),
                 SizedBox(height: 8),
                 Form(
                     child: Column(

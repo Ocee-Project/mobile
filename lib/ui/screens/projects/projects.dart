@@ -92,7 +92,9 @@ class ProjectsPage extends StatelessWidget {
                 : MyColors.lavenderHighlighted,
             borderRadius: BorderRadius.circular(20),
             child: child,
-            onTap: () {},
+            onTap: () {
+              projectController.openDetails(project);
+            },
           ),
         ),
         decoration: BoxDecoration(

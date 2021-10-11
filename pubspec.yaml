@@ -16,6 +16,7 @@ dependencies:
   get: "4.1.4"
   get_storage: "2.0.2"
   http: ^0.13.3
+  simple_animations: ^4.0.1
 
 dev_dependencies:
   flutter_test:

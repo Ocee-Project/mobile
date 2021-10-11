@@ -10,4 +10,8 @@ class ProjectService {
   Future<http.Response> getFollowedProjects() async {
     return await ApiClient.get(url: 'projects/followers');
   }
+
+  Future<http.Response> getProjectDetails(String id) async {
+    return await ApiClient.get(url: 'steps/steps-by-project/$id');
+  }
 }
