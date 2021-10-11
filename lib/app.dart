@@ -26,7 +26,7 @@ class App extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           defaultTransition: Transition.fadeIn,
           getPages: MyRouter.route,
-          initialRoute: '/home',
+          initialRoute: '/login',
         ));
   }
 }

@@ -1,8 +1,8 @@
 import 'package:get/route_manager.dart';
-import 'package:ocee/ui/screens/home/home.dart';
+import 'package:ocee/ui/screens/login/login.dart';
 
 class MyRouter {
   static var route = [
-    GetPage(name: '/home', page: () => HomePage()),
+    GetPage(name: '/login', page: () => LoginPage()),
   ];
 }

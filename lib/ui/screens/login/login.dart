@@ -4,7 +4,7 @@ import 'package:ocee/controllers/authentication.dart';
 import 'package:ocee/ui/components/images.dart';
 import 'package:ocee/ui/components/inputs.dart';
 
-class HomePage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthenticationController authenticationController =
@@ -20,7 +20,10 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                MyImages.logo(scale: 1.5),
+                Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: MyImages.logo(scale: 1.5),
+                ),
                 SizedBox(height: 8),
                 Form(
                     child: Column(
