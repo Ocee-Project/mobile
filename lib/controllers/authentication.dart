@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:ocee/services/authentication.dart';
 import 'package:http/http.dart' as http;
+import 'package:ocee/utils/instances.dart';
 
 class AuthenticationController extends GetxController {
   final AuthenticationService authenticationService;
@@ -24,6 +27,7 @@ class AuthenticationController extends GetxController {
       }),
     );
     if (response.statusCode == 200) {
+      Instances.box.write("token", jsonDecode(response.body)["token"]);
       Get.toNamed("/projects");
       return true;
     } else {

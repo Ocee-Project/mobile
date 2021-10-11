@@ -1,14 +1,27 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:ocee/utils/instances.dart';
 
 class ApiClient {
   static String baseUrl = "ocee-api.azurewebsites.net";
   static String api = "api";
 
+  static Future<Map<String, String>> headers() async {
+    var headers = {"Content-Type": "application/json"};
+
+    var token = await Instances.box.read("token");
+    headers.addAll({"Authorization": "Bearer ${token}"});
+
+    return headers;
+  }
+
   /// Generic get request
   static get({url, params}) async {
-    return http.get(Uri.https(baseUrl, "$api/$url", params));
+    return http.get(Uri.https(baseUrl, "$api/$url", params),
+        headers: await headers());
   }
 
   /// Generic put request
@@ -19,7 +32,7 @@ class ApiClient {
   /// Generic post request
   static post({url, body}) async {
     return http.post(Uri.https(baseUrl, "$api/$url"),
-        headers: {"Content-Type": "application/json"}, body: jsonEncode(body));
+        headers: await headers(), body: jsonEncode(body));
   }
 
   /// Generic delete request

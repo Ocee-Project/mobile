@@ -14,4 +14,8 @@ class MyTexts {
       style: TextStyle(fontSize: 20),
     );
   }
+
+  static Widget p(text) {
+    return Text(text);
+  }
 }

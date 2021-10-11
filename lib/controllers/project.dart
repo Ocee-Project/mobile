@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
@@ -19,18 +21,26 @@ class ProjectController extends GetxController {
       : assert(projectService != null);
 
   Future<List<Project>> getManagedProjects() async {
-    // projectService.getManagedProjects();
-    List<Project> projects = [];
-    projects.add(new Project(
-        title: "Projet Michelin",
-        description: "C'est le projet michelin",
-        client: "Michelin"));
+    final response = await projectService.getManagedProjects();
+    return parseProjects(response.body);
+  }
 
-    projects.add(new Project(
-        title: "Projet Leroy Merlin",
-        description: "C'est le projet lm",
-        client: "Leroy Merlin"));
+  Future<List<Project>> getFollowedProjects() async {
+    final response = await projectService.getFollowedProjects();
+    return parseProjects(response.body);
+  }
+
+  List<Project> parseProjects(String body) {
+    List<Project> projects = [];
+
+    jsonDecode(body).forEach((dynamic p) {
+      projects.add(Project.fromJson(p));
+    });
 
     return projects;
+  }
+
+  void newProject() {
+    Get.snackbar("Ajouter un projet", "Indisponible sur l'application mobile");
   }
 }

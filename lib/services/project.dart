@@ -4,6 +4,10 @@ import 'package:ocee/services/apiClient.dart';
 
 class ProjectService {
   Future<http.Response> getManagedProjects() async {
-    // return await ApiClient.post(url: 'authentication/authenticate', body: body);
+    return await ApiClient.get(url: 'projects/owners');
+  }
+
+  Future<http.Response> getFollowedProjects() async {
+    return await ApiClient.get(url: 'projects/followers');
   }
 }
