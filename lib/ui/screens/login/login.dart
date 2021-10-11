@@ -12,10 +12,10 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Connexion"),
+          title: Text("Ocee / Connexion"),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 8, right: 8.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -46,8 +46,7 @@ class LoginPage extends StatelessWidget {
                 MyInputs.button(
                     text: "Se connecter",
                     onPress: () async {
-                      dynamic response = await authenticationController.login();
-                      print(response.statusCode);
+                      await authenticationController.login();
                     })
               ],
             ),

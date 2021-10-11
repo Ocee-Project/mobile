@@ -14,6 +14,7 @@ class Themes {
     colorScheme: ColorScheme.light(primary: MyColors.violet),
     cardTheme: CardTheme(color: Colors.white),
     canvasColor: MyColors.white,
+    fontFamily: "Montserrat",
 
     // Checkboxes
     unselectedWidgetColor: MyColors.violet,

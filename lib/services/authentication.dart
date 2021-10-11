@@ -4,7 +4,6 @@ import 'package:ocee/services/apiClient.dart';
 
 class AuthenticationService {
   Future<http.Response> login({body}) async {
-    print(body);
     return await ApiClient.post(url: 'authentication/authenticate', body: body);
   }
 }
