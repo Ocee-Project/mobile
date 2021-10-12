@@ -4,7 +4,7 @@ class MyTexts {
   static Widget h1(title) {
     return Text(
       title,
-      style: TextStyle(fontSize: 26),
+      style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
     );
   }
 

@@ -62,8 +62,8 @@ class ProjectController extends GetxController {
   }
 
   void openDetails(Project project) {
-    Get.to(ProjectDetailsPage(
-      project: project,
-    ));
+    Get.to(() => ProjectDetailsPage(
+          project: project,
+        ));
   }
 }

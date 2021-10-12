@@ -60,7 +60,9 @@ class ProjectsPage extends StatelessWidget {
   projectList({List<Project> projects, bool managed}) {
     List<Widget> projectList = [];
 
-    if (managed) projectList.add(projectItem(child: newProjectContent()));
+    if (managed)
+      projectList.add(projectItem(
+          child: newProjectContent(), onPress: projectController.newProject));
 
     projects.forEach((Project p) {
       projectList.add(projectItem(
@@ -75,7 +77,8 @@ class ProjectsPage extends StatelessWidget {
     );
   }
 
-  Widget projectItem({Project project, bool managed = true, Widget child}) {
+  Widget projectItem(
+      {Project project, bool managed = true, Widget child, Function onPress}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -93,7 +96,9 @@ class ProjectsPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: child,
             onTap: () {
-              projectController.openDetails(project);
+              onPress != null
+                  ? onPress()
+                  : projectController.openDetails(project);
             },
           ),
         ),
@@ -118,21 +123,25 @@ class ProjectsPage extends StatelessWidget {
   }
 
   Widget projectContent({Project project, managed = true}) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(project.title,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(project.title,
+                style: TextStyle(
+                    color: managed ? MyColors.white : MyColors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20)),
+          ),
+          Divider(),
+          Text(project.description,
               style: TextStyle(
                   color: managed ? MyColors.white : MyColors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20)),
-        ),
-        Divider(),
-        Text(project.description,
-            style: TextStyle(
-                color: managed ? MyColors.white : MyColors.black, fontSize: 16))
-      ],
+                  fontSize: 16))
+        ],
+      ),
     );
   }
 }
