@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:ocee/controllers/project.dart';
 import 'package:ocee/data/project.dart';
+import 'package:ocee/ui/components/appbar.dart';
 import 'package:ocee/ui/components/loader.dart';
 import 'package:ocee/ui/components/texts.dart';
 import 'package:ocee/utils/constants.dart';
@@ -12,9 +13,7 @@ class ProjectsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Ocee / Projets"),
-        ),
+        appBar: appbar(title: "Ocee / Projets"),
         body: SingleChildScrollView(
           child: Column(
             children: [

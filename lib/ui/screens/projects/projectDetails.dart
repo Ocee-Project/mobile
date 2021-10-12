@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ocee/controllers/project.dart';
 import 'package:ocee/data/project.dart';
+import 'package:ocee/ui/components/appbar.dart';
 import 'package:ocee/ui/components/loader.dart';
 import 'package:ocee/ui/components/texts.dart';
 import 'package:ocee/data/step.dart' as step;
@@ -17,7 +18,7 @@ class ProjectDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ProjectController projectController = Get.find<ProjectController>();
     return Scaffold(
-        appBar: AppBar(title: Text("Ocee / ${project.title}")),
+        appBar: appbar(title: "Ocee / ${project.title}"),
         body: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.all(8.0),

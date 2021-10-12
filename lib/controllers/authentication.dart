@@ -14,12 +14,15 @@ class AuthenticationController extends GetxController {
 
   Rx<String> username = "".obs;
   Rx<String> password = "".obs;
+  Rx<bool> loading = false.obs;
 
   // Constructor
   AuthenticationController({@required this.authenticationService})
       : assert(authenticationService != null);
 
   Future<bool> login() async {
+    loading.value = true;
+
     http.Response response = await authenticationService.login(
       body: (<String, String>{
         'email': this.username.value.toString(),
@@ -28,9 +31,16 @@ class AuthenticationController extends GetxController {
     );
     if (response.statusCode == 200) {
       Instances.box.write("token", jsonDecode(response.body)["token"]);
+      loading.value = false;
+      username.value = "";
+      password.value = "";
+
       Get.toNamed("/projects");
       return true;
     } else {
+      Get.snackbar("Connexion", "Une erreur est survenue à la connexion");
+      loading.value = false;
+
       return false;
     }
   }
