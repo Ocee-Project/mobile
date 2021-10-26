@@ -44,12 +44,11 @@ class ProjectController extends GetxController {
     return projects;
   }
 
-  Future<dynamic> getProjectDetails(int id) async {
+  Future<List<step.Step>> getProjectDetails(int id) async {
     final response = await projectService.getProjectDetails(id.toString());
-    await Future.delayed(const Duration(seconds: 1));
 
     List<step.Step> steps = [];
-    jsonDecode(response.body)
+    jsonDecode(response.body)["steps"]
         .forEach((s) => {steps.add(step.Step.fromJson(s))});
 
     return steps;

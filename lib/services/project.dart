@@ -12,6 +12,6 @@ class ProjectService {
   }
 
   Future<http.Response> getProjectDetails(String id) async {
-    return await ApiClient.get(url: 'steps/steps-by-project/$id');
+    return await ApiClient.get(url: 'projects/$id');
   }
 }
