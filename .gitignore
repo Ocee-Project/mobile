@@ -1,4 +1,5 @@
 .flutter-plugins-dependencies
+.flutter-plugins
 build
 .vscode
 .dart_tool
@@ -6,4 +7,5 @@ build
 pubspec.lock
 .packages
 .packages
+.DS_Store
 
