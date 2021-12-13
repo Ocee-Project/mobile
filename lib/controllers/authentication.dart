@@ -32,8 +32,6 @@ class AuthenticationController extends GetxController {
     if (response.statusCode == 200) {
       Instances.box.write("token", jsonDecode(response.body)["token"]);
       loading.value = false;
-      username.value = "";
-      password.value = "";
 
       Get.toNamed("/projects");
       return true;

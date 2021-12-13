@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ocee/controllers/connectivity.dart';
 
-AppBar appbar({title}) {
+AppBar appbar({title, backButton = true}) {
   final ConnectivityController connectivityController =
       Get.find<ConnectivityController>();
   return AppBar(
     title: Text(title),
+    automaticallyImplyLeading: backButton,
     actions: [
       IconButton(
           onPressed: () {

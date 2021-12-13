@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
+import 'package:get/get.dart';
 import 'package:ocee/controllers/project.dart';
 import 'package:ocee/data/project.dart';
 import 'package:ocee/ui/components/appbar.dart';
@@ -82,7 +82,7 @@ class ProjectsPage extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         height: 200,
-        width: 340,
+        width: Get.width * 0.8,
         child: Material(
           color: managed
               ? MyColors.violetHighlighted

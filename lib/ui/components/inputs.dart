@@ -26,11 +26,12 @@ class MyInputs {
       Color backgroundColor,
       double sizeFactor = 1,
       TextStyle style,
+      bool enable = true,
       Color textColor}) {
     return Padding(
       padding: const EdgeInsets.only(top: 8, bottom: 8.0),
       child: ElevatedButton(
-          onPressed: onPress,
+          onPressed: enable ? onPress : null,
           style: ButtonStyle(
               backgroundColor:
                   MaterialStateProperty.all<Color>(backgroundColor),

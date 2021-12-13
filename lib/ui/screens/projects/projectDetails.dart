@@ -85,6 +85,7 @@ class ProjectDetailsPage extends StatelessWidget {
                         return ListTile(
                           title: Text(t.title),
                           subtitle: Text(t.description),
+                          leading: t.finished ? Icon(Icons.check) : null,
                         );
                       }).toList(),
                     ),
